@@ -5,8 +5,12 @@ jobs:
     runs-on: ubuntu-latest
     services:
       db:
-        image: postgres:11
+        image: postgres:11-alpine
         ports: ['5432:5432']
+        env:
+          POSTGRES_DB: ci_cd_test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
